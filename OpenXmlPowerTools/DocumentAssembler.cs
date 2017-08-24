@@ -192,7 +192,7 @@ namespace OpenXmlPowerTools
                 if (element.Name == W.sdt && element.Parent.Name == W.tr)
                 {
                     var newCell = new XElement(W.tc,
-                        element.Elements(W.tc).Elements(W.tcPr),
+                        element.Elements(W.sdtContent).Elements(W.tc).Elements(W.tcPr),
                         new XElement(W.sdt,
                             element.Elements(W.sdtPr),
                             element.Elements(W.sdtEndPr),
