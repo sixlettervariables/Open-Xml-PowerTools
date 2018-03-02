@@ -28,7 +28,7 @@ namespace OpenXmlPowerTools
 {
     public class TestUtil
     {
-        public static DirectoryInfo SourceDir = new DirectoryInfo("../../../TestFiles/");
+        public static DirectoryInfo SourceDir = new DirectoryInfo("../../../../TestFiles/");
         private static bool? s_DeleteTempFiles = null;
 
         public static bool DeleteTempFiles
@@ -72,6 +72,12 @@ namespace OpenXmlPowerTools
             if (!notepadExe.Exists)
                 notepadExe = new FileInfo(@"C:\Windows\System32\notepad.exe");
             ExecutableRunner.RunExecutable(notepadExe.FullName, fi.FullName, TempDir.FullName);
+        }
+
+        public static void KDiff3(FileInfo oldFi, FileInfo newFi)
+        {
+            var kdiffExe = new FileInfo(@"C:\Program Files (x86)\KDiff3\kdiff3.exe");
+            var result = ExecutableRunner.RunExecutable(kdiffExe.FullName, oldFi.FullName + " " + newFi.FullName, TempDir.FullName);
         }
 
         public static void Explorer(DirectoryInfo di)
